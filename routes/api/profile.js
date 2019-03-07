@@ -3,12 +3,12 @@ const router    = express.Router();
 const User      = require('../../models/User');
 const gravatar  = require('gravatar');
 const bcrypt    = require('bcryptjs');
-const mongoose  = required('mongoose');
-const passport  = required('passport');
-const Profile   = required('../../models/Profile');
-const validateProfileInput = required('../../validation/profileValidation');
-const validateExperienceInput = required('../../validation/experience');
-const validateEducationInput = required('../../validation/eduction');
+const mongoose  = require('mongoose');
+const passport  = require('passport');
+const Profile   = require('../../models/Profile');
+const validateProfileInput = require('../../validation/profileValidation');
+const validateExperienceInput = require('../../validation/experience');
+const validateEducationInput = require('../../validation/education');
 
 //@route GET api/profile
 
@@ -50,7 +50,7 @@ Profile.findOne({handle:req.params.handle})
        .then(profile=>{
         if(!profile){
           errors.noprofile= "No Profile";
-          res.st atus(404).json(errors);
+          res.status(404).json(errors);
         }
 
         res.json(profile);

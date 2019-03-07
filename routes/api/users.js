@@ -101,14 +101,12 @@ router.post('/login',(req,res)=>{
 
 // desc return current user 
 
-router.get('/current',passport.authentication('jwt',{session:false}),
-    (req,res)=>{
-    	res.json({
-    		id:req.user.id,
-    		name:req.user.name,
-    		email:req.user.email
-    	});
-    }
-	);
+router.get(
+  '/current',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    res.json({status:true});
+  }
+);
 
 module.exports =router;
