@@ -29,7 +29,7 @@ module.exports = function validateRegisterInput(data){
     	errors.email = 'Email field is required';
 
     }
-           if(validator.isEmail(data.email)){
+           if(!validator.isEmail(data.email)){
     	errors.password = 'Email is not valid';
 
     }
@@ -42,7 +42,7 @@ module.exports = function validateRegisterInput(data){
 
     }
 
-    if(validator.equals(data.password,data.password2)){
+    if(!validator.equals(data.password,data.password2)){
     	errors.password2 = 'password must match';
     }
 

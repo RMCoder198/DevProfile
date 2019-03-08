@@ -6,8 +6,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/key');
 const passport = require('passport');
-const validateRegisterInput = require('../../validation/registerValid');
-const validateLoginInput = require('../../validation/loginValidation');
+const validateRegister = require('../../validation/registerValid');
+const validateLogin = require('../../validation/loginValidation');
 
 //@route GET api/users
 
@@ -23,7 +23,7 @@ router.get('/test',(req,res)=> res.json({message:"Test API works"}));
 router.post('/register',(req,res)=>{
 
    const { errors, isValid } = validateRegister(req.body);
-
+  console.log(req.body);
    if(!isValid){
    	return 	res.status(400).json(errors);
    }
@@ -64,7 +64,7 @@ router.post('/register',(req,res)=>{
 // desc Login user
 
 router.post('/login',(req,res)=>{
-	   const { errors, isValid } = validateLoginInput(req.body);
+	   const { errors, isValid } = validateLogin(req.body);
 
    if(!isValid){
    	return 	res.status(400).json(errors);
